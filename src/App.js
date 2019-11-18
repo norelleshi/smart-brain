@@ -30,10 +30,7 @@ const initialState = {
   input: '',
   imageUrl: '',
   box: {},
-  user: {
-    id: '',
-    accumulation: 0
-  }
+  accumulation: 0
 }
 
 class App extends React.Component {
@@ -79,12 +76,12 @@ class App extends React.Component {
           method: 'put',
           headers: {'Content-type': 'application/json'},
           body: JSON.stringify({
-            id: this.state.user.id
+            accmulation: this.state.accumulation
           })
         })
         .then(response => response.json())
         .then(count => {
-          this.setState(Object.assign(this.state.user, {accumulation: count}))
+          this.setState({ accumulation: count })
         })
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
@@ -97,7 +94,7 @@ class App extends React.Component {
       <div className="App">
         <Particles className='particles' params={particleOptions} />
         <Navigation />
-        <Accumulation accumulation={this.state.user.accumulation} />
+        <Accumulation accumulation={this.state.accumulation} />
         <ImageLinkForm 
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}            
