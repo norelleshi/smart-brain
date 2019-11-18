@@ -3,7 +3,7 @@ import Particles from 'react-particles-js';
 import Navigation from './components/Navigation/Navigation';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-// import Accumulation from './components/Accumulation/Accumulation';
+import Accumulation from './components/Accumulation/Accumulation';
 import './App.css';
 
 const particleOptions = {
@@ -64,7 +64,7 @@ class App extends React.Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://smartbrain-detect.herokuapp.com/imageurl', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
@@ -74,9 +74,12 @@ class App extends React.Component {
     .then(response => response.json())
     .then(response => {
       if(response) {
-        fetch('http://localhost:3000/image', {
+        fetch('https://smartbrain-detect.herokuapp.com/image', {
           method: 'put',
-          headers: {'Content-type': 'application/json'}
+          headers: {'Content-type': 'application/json'},
+          body: JSON.stringify({
+            accumulation: this.state.user.accumulation
+          })
         })
         .then(response => response.json())
         .then(count => {
@@ -93,7 +96,7 @@ class App extends React.Component {
       <div className="App">
         <Particles className='particles' params={particleOptions} />
         <Navigation />
-        {/* <Accumulation accumulation={this.state.user.accumulation} /> */}
+        <Accumulation accumulation={this.state.user.accumulation} />
         <ImageLinkForm 
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}            
