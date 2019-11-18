@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/smart-brain/precache-manifest.f5db582eb4ac8ebcb6e0788d3d8cbb12.js"
+  "/smart-brain/precache-manifest.23c93ed40d68bda32cb024ce39add884.js"
 );
 
 self.addEventListener('message', (event) => {
