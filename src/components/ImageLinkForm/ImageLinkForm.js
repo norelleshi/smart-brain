@@ -13,7 +13,7 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit}) => {
                             type='text' 
                             placeholder='Paste URL' 
                             onChange={onInputChange}/>
-                    <button className='br2-ns br--right-ns w-25 grow f4 link ph3 pv2 dib white bg-light-purple' 
+                    <button className='br2-ns br--right-ns w-27 grow f3 link ph3 pv2 dib white bg-light-purple' 
                             onClick={onButtonSubmit}
                             >Detect</button>
                 </div>
