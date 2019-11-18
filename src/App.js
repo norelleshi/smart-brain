@@ -31,6 +31,7 @@ const initialState = {
   imageUrl: '',
   box: {},
   user: {
+    id: '',
     accumulation: 0
   }
 }
@@ -78,7 +79,7 @@ class App extends React.Component {
           method: 'put',
           headers: {'Content-type': 'application/json'},
           body: JSON.stringify({
-            accumulation: this.state.user.accumulation
+            id: this.state.user.id
           })
         })
         .then(response => response.json())
